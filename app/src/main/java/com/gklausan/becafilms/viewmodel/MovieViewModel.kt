@@ -1,30 +1,52 @@
 package com.gklausan.becafilms.viewmodel
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.gklausan.becafilms.api.IRetrofitService
+import androidx.lifecycle.*
+import com.gklausan.becafilms.model.MovieDetails
+import com.gklausan.becafilms.model.MovieResult
 import com.gklausan.becafilms.model.Results
-import com.gklausan.becafilms.repository.MovieRepository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.gklausan.becafilms.model.mockResults
+import com.gklausan.becafilms.repository.IMovieRepository
+import com.gklausan.becafilms.repository.IMovieRepositoryDetails
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
-class MovieViewModel constructor(private val repository: MovieRepository) : ViewModel() {
-
-    val movieList = MutableLiveData<List<Results>>()
-    val errorMessage = MutableLiveData<String>()
+class MovieViewModel(
+    private val movieRepository: IMovieRepository,
+) : ViewModel() {
+    private val movieList = MutableLiveData<MovieResult<Results>>()
+    val movies: LiveData<MovieResult<Results>> = movieList
 
     fun getAllResults() {
-        val request = repository.getAllResults()
-        request.enqueue(object: Callback<List<Results>> {
-            override fun onResponse(call: Call<List<Results>>, response: Response<List<Results>>) {
-                movieList.postValue(response.body())
-            }
+        viewModelScope.launch {
+            movieList.value = MovieResult.Loading()
+            try {
+                val movieFromApi = withContext(Dispatchers.IO) {
+                    movieRepository.getAllResults()
+                }
+                movieList.value = MovieResult.Success(movieFromApi)
+            } catch (e: Exception) {
+                val movieResult = MovieResult.Error<Results>(e, mockResults())
 
-            override fun onFailure(call: Call<List<Results>>, t: Throwable) {
-                errorMessage.postValue(t.message)
+                movieList.value = movieResult
             }
+        }
+    }
+}
 
-        })
+class MovieViewModelDetails(
+    private val movieRepositoryDetails: IMovieRepositoryDetails,
+) : ViewModel() {
+    private val detailMovie = MutableLiveData<MovieDetails>()
+    val movies: LiveData<MovieDetails> = detailMovie
+
+    fun getAllResultsDetails() {
+        viewModelScope.launch {
+            val movieFromApiDetails = withContext(Dispatchers.IO) {
+                movieRepositoryDetails.getMovieDetails()
+            }
+            detailMovie.value = movieFromApiDetails
+        }
     }
 }

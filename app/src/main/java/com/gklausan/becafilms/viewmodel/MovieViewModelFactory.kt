@@ -3,16 +3,15 @@ package com.gklausan.becafilms.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.gklausan.becafilms.repository.MovieRepository
+import com.gklausan.becafilms.repository.MovieRepositoryDetails
 
-@Suppress("UNCHECKED_CAST")
-class MovieViewModelFactory constructor (private val repository: MovieRepository) :
-    ViewModelProvider.Factory{
-    override fun <T: ViewModel> create(modelClass: Class<T>):T{
-        return if (modelClass.isAssignableFrom(MovieViewModel::class.java)){
-            MovieViewModel(this.repository) as T
-        } else
-        {
-            throw IllegalArgumentException("Cant find viewmodel")
-        }
+class MovieViewModelFactory(private val repository: MovieRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return MovieViewModel(repository) as T
+    }
+}
+class MovieViewModelFactoryDetails(private val repositoryDetails: MovieRepositoryDetails) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return MovieViewModelDetails(repositoryDetails) as T
     }
 }
