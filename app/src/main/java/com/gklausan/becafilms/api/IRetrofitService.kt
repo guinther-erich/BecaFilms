@@ -7,21 +7,21 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-interface RetrofitService {
+interface IRetrofitService {
     @GET(Constants.PATH_URL)
-    fun getAllLives(): Call<List<Results>>
+    fun getAllResults() : Call<List<Results>>
 
     companion object {
-        private val retrofitService: RetrofitService by lazy {
+        private val retrofitService: IRetrofitService by lazy {
             val retrofit = Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-            retrofit.create(RetrofitService::class.java)
+            retrofit.create(IRetrofitService::class.java)
         }
 
-        fun getInstance():RetrofitService{
+        fun getInstance(): IRetrofitService{
             return retrofitService
         }
     }
