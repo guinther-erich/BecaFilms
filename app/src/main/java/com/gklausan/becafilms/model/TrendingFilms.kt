@@ -1,5 +1,7 @@
 package com.gklausan.becafilms.model
 
+import java.io.Serializable
+
 data class TrendingFilms(
     val adult: Boolean,
     val backdrop_path: String,
@@ -16,4 +18,4 @@ data class TrendingFilms(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-)
+): Serializable
