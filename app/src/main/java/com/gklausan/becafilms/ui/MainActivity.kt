@@ -1,7 +1,8 @@
-package com.gklausan.becafilms
+package com.gklausan.becafilms.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.gklausan.becafilms.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
