@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Window
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.gklausan.becafilms.api.HttpClient
@@ -49,29 +48,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        //requestWindowFeature(Window.FEATURE_NO_TITLE)
-        //supportActionBar?.hide()
-
         movieListAdapter.onClickListener = { movieId ->
             goToMovieDetails(movieId)
         }
         binding.movieItemRecyclerView.adapter = movieListAdapter
+        movieViewModel.getAllResults()
         getMovieAndObserve()
     }
 
     private fun getMovieAndObserve() {
-        movieViewModel.getAllResults()
         movieViewModel.movies.observe(this) { movieApiResult ->
             when (movieApiResult) {
                 is MovieResult.Loading -> {
                     Log.d("Info", "Loading")
                 }
                 is MovieResult.Success -> {
-                    Log.d("Info", "Loading")
-                    setListAdapter(movieApiResult.data as Results)
+                    Log.d("Info", "Loaded")
+                    setListAdapter(movieApiResult.data)
                 }
-                is MovieResult.Error<*> -> {
-                    setListAdapter(movieApiResult.emptyLive)
+                is MovieResult.Error -> {
+                    setListAdapter(movieApiResult.emptyResult)
                     (Toast.makeText(this,
                         "Something unexpected happened, try again later.",
                         Toast.LENGTH_LONG).show())

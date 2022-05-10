@@ -7,22 +7,10 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.gklausan.becafilms.R
-import com.gklausan.becafilms.api.HttpClient
 import com.gklausan.becafilms.model.TrendingFilms
 import com.gklausan.becafilms.databinding.ActivityMovieDetailsBinding
-import com.gklausan.becafilms.utils.Constants
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MovieDetailsActivity : AppCompatActivity(), View.OnClickListener {
-
-    private val retrofitInstanceDetails by lazy {
-        Retrofit.Builder()
-            .client(HttpClient.clientInterceptor)
-            .baseUrl(Constants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
 
     private val binding by lazy {
         ActivityMovieDetailsBinding.inflate(layoutInflater)

@@ -1,12 +1,10 @@
 package com.gklausan.becafilms.viewmodel
 
 import androidx.lifecycle.*
-import com.gklausan.becafilms.model.MovieDetails
 import com.gklausan.becafilms.model.MovieResult
 import com.gklausan.becafilms.model.Results
 import com.gklausan.becafilms.model.mockResults
 import com.gklausan.becafilms.repository.IMovieRepository
-import com.gklausan.becafilms.repository.IMovieRepositoryDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -31,22 +29,6 @@ class MovieViewModel(
 
                 movieList.value = movieResult
             }
-        }
-    }
-}
-
-class MovieViewModelDetails(
-    private val movieRepositoryDetails: IMovieRepositoryDetails,
-) : ViewModel() {
-    private val detailMovie = MutableLiveData<MovieDetails>()
-    val movies: LiveData<MovieDetails> = detailMovie
-
-    fun getAllResultsDetails() {
-        viewModelScope.launch {
-            val movieFromApiDetails = withContext(Dispatchers.IO) {
-                movieRepositoryDetails.getMovieDetails()
-            }
-            detailMovie.value = movieFromApiDetails
         }
     }
 }
