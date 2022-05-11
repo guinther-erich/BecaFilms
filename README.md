@@ -22,3 +22,6 @@ Pensando em dar continuidade ao projeto, seguem as próximas possíveis atualiza
 
 ## Obstáculos na criação deste app
 A implementação de Coroutines e seus desdobramentos para utilização no código foi a principal dificuldade encontrada.
+
+## Visualização do NTT Beca Films
+https://user-images.githubusercontent.com/67793128/167762241-0661c9ba-1c38-4996-ba3a-79a8d6102a65.mp4
