@@ -20,6 +20,14 @@ Pensando em dar continuidade ao projeto, seguem as próximas possíveis atualiza
 - Ajustes na visualização no modo horizontal;
 - Versão em português.
 
+## Alterações na arquitetura
+O app NTT Beca Films pode ser melhor construído utilizando-se as bibliotecas unificadas do Android JetPack, tais como:
+- Activity;
+- Databinding;
+- Hilt (pata injeção de dependências);
+- Lifecycle (para melhor delimitação do ciclo de vida de cada acticity);
+- Entre outras libs que diminuiriam o consumo de memória da aplicação, tendo em vista a sua consistência centralizada em uma só ferramenta, além de permitir um código escrito de forma mais limpa e dentro de práticas recomendadas.
+
 ## Obstáculos na criação deste app
 A implementação de Coroutines e seus desdobramentos para utilização no código foi a principal dificuldade encontrada.
 
