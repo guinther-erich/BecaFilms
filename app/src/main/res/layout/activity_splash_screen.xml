@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:contentDescription="@string/splash_screen" />
+        android:contentDescription="@string/cd_splash_screen" />
 
     <TextView
         android:id="@+id/tv_copy"

@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">NTT Beca Films</string>
-    <string name="backdrop_path">This is a view with a movie image.</string>
-    <string name="poster_path">This is a little view with a movie poster.</string>
+    <string name="cd_backdrop_path">This is a view with a movie image.</string>
+    <string name="cd_poster_path">This is a little view with a movie poster.</string>
     <string name="movie_title">movie_title</string>
     <string name="vote_average">vote_average</string>
     <string name="release_date">release_date</string>
     <string name="copyright">©Copyright</string>
-    <string name="splash_screen">This is splash screen with logo at NTT DATA and an information of copyright in blue color in a white background.</string>
+    <string name="cd_splash_screen">This is splash screen with logo at NTT DATA and an information of copyright in blue color in a white background.</string>
+    <string name="cd_button_back">Button to turn back to list of movies.</string>
 </resources>
