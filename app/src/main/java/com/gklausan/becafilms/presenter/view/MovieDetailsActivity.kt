@@ -1,4 +1,4 @@
-package com.gklausan.becafilms.ui
+package com.gklausan.becafilms.presenter.view
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -7,8 +7,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.gklausan.becafilms.R
-import com.gklausan.becafilms.model.TrendingFilms
 import com.gklausan.becafilms.databinding.ActivityMovieDetailsBinding
+import com.gklausan.becafilms.domain.model.TrendingFilms
 
 class MovieDetailsActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -22,7 +22,7 @@ class MovieDetailsActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()
 
         binding.tvMovieDescription.movementMethod = ScrollingMovementMethod()
-        binding.moviePosterImage.setOnClickListener(this)
+        binding.ivBack.setOnClickListener(this)
         val movieSelected = setDataDetailsActivity()
 
         val overview = movieSelected.overview
@@ -46,7 +46,8 @@ class MovieDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private fun setDataDetailsActivity(): TrendingFilms {
         val movieSelected = intent.getSerializableExtra("movieSelected") as TrendingFilms
         val movieTitle = intent.getStringExtra("movieTitle")
-        val movieVoteAverage = intent.getFloatExtra("movieVoteAverage",
+        val movieVoteAverage = intent.getFloatExtra(
+            "movieVoteAverage",
             movieSelected.vote_average.toFloat()
         )
         val movieReleaseDate = intent.getStringExtra("movieReleaseDate")
@@ -54,11 +55,10 @@ class MovieDetailsActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvReleaseDate.text = "Release date: $movieReleaseDate"
         binding.tvVoteAverage.text = "Vote average: $movieVoteAverage"
         return movieSelected
-
     }
 
     override fun onClick(view: View) {
-        if (view.id == R.id.iv_movie) {
+        if (view.id == R.id.iv_back) {
             finish()
         }
     }
