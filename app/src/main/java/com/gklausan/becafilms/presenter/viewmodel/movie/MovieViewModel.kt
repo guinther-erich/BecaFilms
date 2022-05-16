@@ -1,14 +1,15 @@
-package com.gklausan.becafilms.viewmodel
+package com.gklausan.becafilms.presenter.viewmodel.movie
 
-import androidx.lifecycle.*
-import com.gklausan.becafilms.model.MovieResult
-import com.gklausan.becafilms.model.Results
-import com.gklausan.becafilms.model.mockResults
-import com.gklausan.becafilms.repository.IMovieRepository
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.gklausan.becafilms.data.repository.IMovieRepository
+import com.gklausan.becafilms.domain.model.Results
+import com.gklausan.becafilms.domain.model.mockResults
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.Exception
 
 class MovieViewModel(
     private val movieRepository: IMovieRepository,

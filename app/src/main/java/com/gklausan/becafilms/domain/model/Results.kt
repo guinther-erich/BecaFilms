@@ -1,4 +1,4 @@
-package com.gklausan.becafilms.model
+package com.gklausan.becafilms.domain.model
 
 data class Results(
     val page: Int,

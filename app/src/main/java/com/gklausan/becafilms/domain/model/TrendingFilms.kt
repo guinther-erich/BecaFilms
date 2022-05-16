@@ -1,4 +1,4 @@
-package com.gklausan.becafilms.model
+package com.gklausan.becafilms.domain.model
 
 import java.io.Serializable
 
@@ -18,4 +18,4 @@ data class TrendingFilms(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-): Serializable
+) : Serializable

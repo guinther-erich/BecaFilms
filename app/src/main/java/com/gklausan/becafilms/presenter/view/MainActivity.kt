@@ -1,20 +1,21 @@
-package com.gklausan.becafilms.ui
+package com.gklausan.becafilms.presenter.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.gklausan.becafilms.api.HttpClient
-import com.gklausan.becafilms.api.IRetrofitService
+import androidx.appcompat.app.AppCompatActivity
+import com.gklausan.becafilms.data.api.HttpClient
+import com.gklausan.becafilms.data.api.IRetrofitService
+import com.gklausan.becafilms.data.repository.MovieRepository
 import com.gklausan.becafilms.databinding.ActivityMainBinding
-import com.gklausan.becafilms.model.MovieResult
-import com.gklausan.becafilms.model.Results
-import com.gklausan.becafilms.utils.Constants
-import com.gklausan.becafilms.repository.MovieRepository
-import com.gklausan.becafilms.viewmodel.MovieViewModel
-import com.gklausan.becafilms.viewmodel.MovieViewModelFactory
+import com.gklausan.becafilms.presenter.viewmodel.movie.MovieResult
+import com.gklausan.becafilms.domain.model.Results
+import com.gklausan.becafilms.domain.utils.Constants
+import com.gklausan.becafilms.presenter.adapters.MovieItemAdapter
+import com.gklausan.becafilms.presenter.viewmodel.movie.MovieViewModel
+import com.gklausan.becafilms.presenter.viewmodel.movie.MovieViewModelFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -68,11 +69,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 is MovieResult.Error -> {
                     setListAdapter(movieApiResult.emptyResult)
-                    (Toast.makeText(this,
-                        "Something unexpected happened, try again later.",
-                        Toast.LENGTH_LONG).show())
+                    (
+                        Toast.makeText(
+                            this,
+                            "Something unexpected happened, try again later.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        )
                 }
-
             }
         }
     }
@@ -101,5 +105,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 }

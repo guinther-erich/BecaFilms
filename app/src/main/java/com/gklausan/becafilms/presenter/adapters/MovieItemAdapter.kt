@@ -1,4 +1,4 @@
-package com.gklausan.becafilms.ui
+package com.gklausan.becafilms.presenter.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gklausan.becafilms.R
-import com.gklausan.becafilms.model.TrendingFilms
 import com.gklausan.becafilms.databinding.MovieListItemBinding
+import com.gklausan.becafilms.domain.model.TrendingFilms
 
 class MovieItemAdapter :
     ListAdapter<TrendingFilms, MovieItemAdapter.MovieItemViewHolder>(DIFF_CALLBACK) {
@@ -44,7 +44,7 @@ class MovieItemAdapter :
 
             binding.tvReleaseDate.text = "Release date: ${movie.release_date}"
 
-            binding.tvVoteAverage.text = "Vote average: ${movie.vote_average.toString()}"
+            binding.tvVoteAverage.text = "Vote average: ${movie.vote_average}"
 
             binding.root.setOnClickListener {
                 onClickListener?.invoke(movie.id)

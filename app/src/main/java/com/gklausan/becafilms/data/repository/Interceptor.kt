@@ -1,6 +1,6 @@
-package com.gklausan.becafilms.repository
+package com.gklausan.becafilms.data.repository
 
-import com.gklausan.becafilms.utils.Constants
+import com.gklausan.becafilms.domain.utils.Constants
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response

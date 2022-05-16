@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/gklausan/AndroidStudioProjects/BecaFilms/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1815" />
         <entry key="..\:/Users/gklausan/AndroidStudioProjects/BecaFilms/app/src/main/res/drawable/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/gklausan/AndroidStudioProjects/BecaFilms/app/src/main/res/drawable/loading_details.xml" value="0.1" />
+        <entry key="..\:/Users/gklausan/AndroidStudioProjects/BecaFilms/app/src/main/res/drawable/round_button.xml" value="0.1815" />
         <entry key="..\:/Users/gklausan/AndroidStudioProjects/BecaFilms/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/gklausan/AndroidStudioProjects/BecaFilms/app/src/main/res/layout/activity_movie_details.xml" value="0.1" />
-        <entry key="..\:/Users/gklausan/AndroidStudioProjects/BecaFilms/app/src/main/res/layout/activity_splash_screen.xml" value="0.14356884057971014" />
+        <entry key="..\:/Users/gklausan/AndroidStudioProjects/BecaFilms/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
         <entry key="..\:/Users/gklausan/AndroidStudioProjects/BecaFilms/app/src/main/res/layout/movie_list_item.xml" value="0.1796875" />
         <entry key="..\:/Users/gklausan/AndroidStudioProjects/BecaFilms/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/gklausan/AppData/Local/Android/Sdk/platforms/android-32/data/res/drawable/title_bar.xml" value="0.1" />
