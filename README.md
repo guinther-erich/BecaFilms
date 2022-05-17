@@ -16,8 +16,7 @@ Pensando em dar continuidade ao projeto, seguem as próximas possíveis atualiza
 - Descrição do elenco do filme;
 - Possibilidade de criação de lista de favoritos;
 - Visualização por outros filtros (melhores pontuações, data de lançamento, etc.);
-- Ajustes na visualização no modo horizontal;
-- Versão em português.
+- Ajustes na visualização no modo horizontal.
 
 ## Alterações na arquitetura
 
