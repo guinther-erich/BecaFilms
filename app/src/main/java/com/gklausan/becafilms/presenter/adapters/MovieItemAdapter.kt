@@ -42,9 +42,9 @@ class MovieItemAdapter :
                 .centerCrop()
                 .into(binding.ivMovie)
 
-            binding.tvReleaseDate.text = "Release date: ${movie.release_date}"
+            binding.tvReleaseDate.text = "Lançamento: ${movie.release_date}"
 
-            binding.tvVoteAverage.text = "Vote average: ${movie.vote_average}"
+            binding.tvVoteAverage.text = "Classificação: ${movie.vote_average}"
 
             binding.root.setOnClickListener {
                 onClickListener?.invoke(movie.id)

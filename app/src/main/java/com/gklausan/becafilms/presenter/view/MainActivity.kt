@@ -10,10 +10,10 @@ import com.gklausan.becafilms.data.api.HttpClient
 import com.gklausan.becafilms.data.api.IRetrofitService
 import com.gklausan.becafilms.data.repository.MovieRepository
 import com.gklausan.becafilms.databinding.ActivityMainBinding
-import com.gklausan.becafilms.presenter.viewmodel.movie.MovieResult
 import com.gklausan.becafilms.domain.model.Results
 import com.gklausan.becafilms.domain.utils.Constants
 import com.gklausan.becafilms.presenter.adapters.MovieItemAdapter
+import com.gklausan.becafilms.presenter.viewmodel.movie.MovieResult
 import com.gklausan.becafilms.presenter.viewmodel.movie.MovieViewModel
 import com.gklausan.becafilms.presenter.viewmodel.movie.MovieViewModelFactory
 import retrofit2.Retrofit
@@ -61,10 +61,10 @@ class MainActivity : AppCompatActivity() {
         movieViewModel.movies.observe(this) { movieApiResult ->
             when (movieApiResult) {
                 is MovieResult.Loading -> {
-                    Log.d("Info", "Loading")
+                    Log.d("Info", "Carregando.")
                 }
                 is MovieResult.Success -> {
-                    Log.d("Info", "Loaded")
+                    Log.d("Info", "Carregado.")
                     setListAdapter(movieApiResult.data)
                 }
                 is MovieResult.Error -> {
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                     (
                         Toast.makeText(
                             this,
-                            "Something unexpected happened, try again later.",
+                            "Algo inesperado aconteceu, tente novamente mais tarde.",
                             Toast.LENGTH_LONG
                         ).show()
                         )

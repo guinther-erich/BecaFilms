@@ -13,6 +13,7 @@ class Interceptor() : Interceptor {
                 .url
                 .newBuilder()
                 .addQueryParameter("api_key", Constants.API_KEY)
+                .addQueryParameter("language", "pt-BR")
                 .build()
 
         val request: Request = chain

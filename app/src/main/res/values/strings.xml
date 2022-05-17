@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">NTT Beca Films</string>
-    <string name="cd_backdrop_path">This is a view with a movie image.</string>
-    <string name="cd_poster_path">This is a little view with a movie poster.</string>
+    <string name="cd_backdrop_path">Visualização de uma imagem do filme.</string>
+    <string name="cd_poster_path">Visualização do poster original do filme.</string>
     <string name="movie_title">movie_title</string>
     <string name="vote_average">vote_average</string>
     <string name="release_date">release_date</string>
-    <string name="copyright">©Copyright</string>
-    <string name="cd_splash_screen">This is splash screen with logo at NTT DATA and an information of copyright in blue color in a white background.</string>
-    <string name="cd_button_back">Button to turn back to list of movies.</string>
+    <string name="copyright">©Direitos reservados</string>
+    <string name="cd_splash_screen">Tela de carregamento do aplicativo com o logotipo da NTT DATA e informação de direitos reservados.</string>
+    <string name="cd_button_back">Botão para retornar à lista de filmes.</string>
 </resources>

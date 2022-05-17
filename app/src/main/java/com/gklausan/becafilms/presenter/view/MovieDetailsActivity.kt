@@ -52,8 +52,8 @@ class MovieDetailsActivity : AppCompatActivity(), View.OnClickListener {
         )
         val movieReleaseDate = intent.getStringExtra("movieReleaseDate")
         binding.tvMovieTitle.text = movieTitle
-        binding.tvReleaseDate.text = "Release date: $movieReleaseDate"
-        binding.tvVoteAverage.text = "Vote average: $movieVoteAverage"
+        binding.tvReleaseDate.text = "Lançamento: $movieReleaseDate"
+        binding.tvVoteAverage.text = "Classificação: $movieVoteAverage"
         return movieSelected
     }
 
