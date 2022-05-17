@@ -3,12 +3,16 @@ package com.gklausan.becafilms.presenter.view
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.gklausan.becafilms.R
 import com.gklausan.becafilms.databinding.ActivityMovieDetailsBinding
 import com.gklausan.becafilms.domain.model.TrendingFilms
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MovieDetailsActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -50,7 +54,7 @@ class MovieDetailsActivity : AppCompatActivity(), View.OnClickListener {
             "movieVoteAverage",
             movieSelected.vote_average.toFloat()
         )
-        val movieReleaseDate = intent.getStringExtra("movieReleaseDate")
+        val movieReleaseDate = intent.getStringExtra("movieReleaseDate")?.getDateTimeFormatted()
         binding.tvMovieTitle.text = movieTitle
         binding.tvReleaseDate.text = "Lançamento: $movieReleaseDate"
         binding.tvVoteAverage.text = "Classificação: $movieVoteAverage"
@@ -61,5 +65,29 @@ class MovieDetailsActivity : AppCompatActivity(), View.OnClickListener {
         if (view.id == R.id.iv_back) {
             finish()
         }
+    }
+
+    private fun String.getDateTimeFormatted(): String {
+        try {
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", getLocale())
+            val date = dateFormat.parse(this)
+            date?.let {
+                return getDateToStringFormatted(date, "dd/MM/yyyy")
+            }
+        } catch (e: ParseException) {
+            e.localizedMessage?.let {
+                Log.d("TAG", "getDateTimeFormatted: $e")
+            }
+        }
+        return orEmpty()
+    }
+
+    private fun getDateToStringFormatted(date: Date, dateString: String): String {
+        val simpleDateFormat = SimpleDateFormat(dateString, getLocale())
+        return simpleDateFormat.format(date)
+    }
+
+    private fun getLocale(): Locale {
+        return Locale("pt", "BR")
     }
 }

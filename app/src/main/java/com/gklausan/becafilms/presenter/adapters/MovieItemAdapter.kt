@@ -1,6 +1,7 @@
 package com.gklausan.becafilms.presenter.adapters
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,6 +11,9 @@ import com.bumptech.glide.Glide
 import com.gklausan.becafilms.R
 import com.gklausan.becafilms.databinding.MovieListItemBinding
 import com.gklausan.becafilms.domain.model.TrendingFilms
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MovieItemAdapter :
     ListAdapter<TrendingFilms, MovieItemAdapter.MovieItemViewHolder>(DIFF_CALLBACK) {
@@ -42,13 +46,37 @@ class MovieItemAdapter :
                 .centerCrop()
                 .into(binding.ivMovie)
 
-            binding.tvReleaseDate.text = "Lançamento: ${movie.release_date}"
+            binding.tvReleaseDate.text = "Lançamento: ${movie.release_date.getDateTimeFormatted()}"
 
             binding.tvVoteAverage.text = "Classificação: ${movie.vote_average}"
 
             binding.root.setOnClickListener {
                 onClickListener?.invoke(movie.id)
             }
+        }
+
+        private fun String.getDateTimeFormatted(): String {
+            try {
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd", getLocale())
+                val date = dateFormat.parse(this)
+                date?.let {
+                    return getDateToStringFormatted(date, "dd/MM/yyyy")
+                }
+            } catch (e: ParseException) {
+                e.localizedMessage?.let {
+                    Log.d("TAG", "getDateTimeFormatted: $e")
+                }
+            }
+            return orEmpty()
+        }
+
+        private fun getDateToStringFormatted(date: Date, dateString: String): String {
+            val simpleDateFormat = SimpleDateFormat(dateString, getLocale())
+            return simpleDateFormat.format(date)
+        }
+
+        private fun getLocale(): Locale {
+            return Locale("pt", "BR")
         }
     }
 
